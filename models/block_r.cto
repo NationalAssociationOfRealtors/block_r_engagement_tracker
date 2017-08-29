@@ -1,0 +1,36 @@
+/**
+ * Block R business network definition.
+ */
+namespace org.block_r.engagement_tracker
+
+asset EventType identified by eventTypeId {
+  o String eventTypeId
+  o String description
+  --> User creator
+}
+
+participant User identified by userId {
+  o String userId
+  o String firstName
+  o String lastName
+  o String organization
+  o String address
+  o String phoneNumber
+  o String email
+  o String mobileNumber
+}
+
+transaction ReportedEvent {
+  o String memberId
+  o String description
+  o String reportedBy
+  o String eventType
+}
+
+event EngagementEvent {
+  o String memberId
+  o String reportedBy
+  o String description
+  o String eventType
+}
+

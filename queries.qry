@@ -1,0 +1,17 @@
+/**
+ * Block R query file
+ */
+query selectUser {
+  description: "Select user based on their id"
+  statement:
+      SELECT org.block_r.engagement_tracker.User
+          WHERE (userId == _$userId)
+}
+
+query selectEventType {
+  description: "Select eventType based on their id"
+  statement:
+      SELECT org.block_r.engagement_tracker.EventType
+          WHERE (eventTypeId == _$eventTypeId)
+}
+
