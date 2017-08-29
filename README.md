@@ -1,4 +1,4 @@
-This is the Engagement Tracker application of the Block R series.
+# Engagement Tracker of the Block R Series
 
 The lifecycle of a Member is made up of events that occur at Local, State or National level.  Events can be committee assignments, attendence at meetings, participation in workgroups, etc.  Today, these events are tracked by each association and the information is not shared.  This system organizes event information by member instead of by association.
  
