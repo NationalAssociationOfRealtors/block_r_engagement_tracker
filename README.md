@@ -24,6 +24,20 @@ ReportedEvents provides the intersection of Member, Association and the event.
 
 EngagementEvents are emitted by the system to inform listening application that events have been reported. 
 
+**Installation**
+
+First install Hyperledger.
+
+Next install Hyperledger Composer
+
+Then, from the root of this repository, issue:
+
+```
+npm install
+```
+
+**Testing**
+
 To test this Business Network Definition in the **Test** tab:
 
 Create a `User` participant:
