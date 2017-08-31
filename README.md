@@ -26,15 +26,85 @@ EngagementEvents are emitted by the system to inform listening application that 
 
 **Installation**
 
-First install Hyperledger.
+1. Install [Hyperledger Development Tools] (https://github.com/hyperledger/composer-tools/tree/master/packages/fabric-dev-servers)
 
-Next install Hyperledger Composer
+You should always use the documentation, but the following sequence is close.  It assumes, as does the documentation, that you will be building everything in your home account is a directory called "fabric-tools".  Substitute the directory of your choice.
 
-Then, from the root of this repository, issue:
+```
+$ mkdir ~/fabric-tools && cd ~/fabric-tools
+$ curl -O https://raw.githubusercontent.com/hyperledger/composer-tools/master/packages/fabric-dev-servers/fabric-dev-servers.tar.gz
+$ tar xzf fabric-dev-servers.tar.gz
+```
+
+2. Start Fabric
+
+```
+$ cd ~/fabric-tools
+$ ./downloadFabric.sh
+$ ./startFabric.sh
+```
+
+You may find that some directories need to be shared with Docker on OSX.
+
+Hyperledger is now running.
+
+Stopping fabric is as sinple as
+
+```
+$ cd ~/fabric-tools
+$ ./stopFabric.sh
+```
+
+3. You need to create a network credentials only once:
+
+```
+$ cd ~/fabric-tools
+$ ./createComposerProfile.sh
+```
+
+This creates a connectiobn.json credentail file in the directory "~/.composer-connection-profiles/hlfv1".
+
+```
+$ cd ~/.composer-connection-profiles
+$ mkdir block_r && cd block_r
+$ cp ../hlfv1/connection.json .
+```
+
+This credential file is needed later in step #6,
+
+4. Install Composer tools
+
+From the directory of your choice, install the node-base Composer tools.  There will be many warnings about deprecated packages, these are safe to ignore at the moment.
+
+```
+npm install -g composer-cli
+npm install -g generator-hyperledger-composer
+npm install -g composer-rest-server
+npm install -g yo
+```
+
+5. Install this package
+
+From the root of this repository:
 
 ```
 npm install
 ```
+
+You should end up with a .bpa file in the ./dist directory
+
+6.  Install the .bpa into a running Fabric system from step #2 above
+
+```
+composer network deploy -p block_r -a ./dist/block-r-engagement-tracker.bna -i PeerAdmin -s x
+```
+
+6. Start the Composer REST Server with Fabric running from step #2 above
+
+```
+composer-rest-server
+```
+
 
 **Testing**
 
