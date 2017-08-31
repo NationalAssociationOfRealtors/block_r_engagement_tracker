@@ -24,6 +24,8 @@ ReportedEvents provides the intersection of Member, Association and the event.
 
 EngagementEvents are emitted by the system to inform listening application that events have been reported. 
 
+---
+
 **Installation**
 
 1. Install [Hyperledger Development Tools] (https://github.com/hyperledger/composer-tools/tree/master/packages/fabric-dev-servers)
@@ -35,6 +37,7 @@ $ mkdir ~/fabric-tools && cd ~/fabric-tools
 $ curl -O https://raw.githubusercontent.com/hyperledger/composer-tools/master/packages/fabric-dev-servers/fabric-dev-servers.tar.gz
 $ tar xzf fabric-dev-servers.tar.gz
 ```
+
 
 2. Start Fabric
 
@@ -55,6 +58,7 @@ $ cd ~/fabric-tools
 $ ./stopFabric.sh
 ```
 
+
 3. You need to create a connection profile for the network only once:
 
 ```
@@ -72,6 +76,7 @@ $ cp ../hlfv1/connection.json .
 
 This connection profile is needed later in step #6,
 
+
 4. Install Composer tools
 
 From the directory of your choice, install the node-base Composer tools.  There will be many warnings about deprecated packages, these are safe to ignore at the moment.
@@ -83,6 +88,7 @@ npm install -g composer-rest-server
 npm install -g yo
 ```
 
+
 5. Install this package
 
 From the root of this repository:
@@ -93,19 +99,23 @@ npm install
 
 You should end up with a .bpa file in the ./dist directory
 
+
 6.  Install the .bpa into a running Fabric system from step #2 above
 
 ```
 composer network deploy -p block_r -a ./dist/block-r-engagement-tracker.bna -i PeerAdmin -s x
 ```
 
-The -p argument identifies the connection profile you set up in step #3.
+The -p argument identifies the connection profile you set up in step #3 above.
 
-6. Start the Composer REST Server with Fabric running from step #2 above
+
+7. Start the Composer REST Server with Fabric running from step #2 above
 
 ```
 composer-rest-server
 ```
+
+---
 
 
 **Testing**
@@ -151,5 +161,4 @@ Submit a `ReportedEvent` transaction for a member using the memberId from the NR
 
 After submitting this transaction, you should now see the transaction in the Transaction Registry and that a `SampleEvent` has been emitted. As a result, the value of the `assetId:1` should now be `new value` in the Asset Registry.
 
-Congratulations!
 
