@@ -55,14 +55,14 @@ $ cd ~/fabric-tools
 $ ./stopFabric.sh
 ```
 
-3. You need to create a network credentials only once:
+3. You need to create a connection profile for the network only once:
 
 ```
 $ cd ~/fabric-tools
 $ ./createComposerProfile.sh
 ```
 
-This creates a connectiobn.json credentail file in the directory "~/.composer-connection-profiles/hlfv1".
+This creates a connection.json connection profile in the directory "~/.composer-connection-profiles/hlfv1".
 
 ```
 $ cd ~/.composer-connection-profiles
@@ -70,7 +70,7 @@ $ mkdir block_r && cd block_r
 $ cp ../hlfv1/connection.json .
 ```
 
-This credential file is needed later in step #6,
+This connection profile is needed later in step #6,
 
 4. Install Composer tools
 
@@ -98,6 +98,8 @@ You should end up with a .bpa file in the ./dist directory
 ```
 composer network deploy -p block_r -a ./dist/block-r-engagement-tracker.bna -i PeerAdmin -s x
 ```
+
+The -p argument identifies the connection profile you set up in step #3.
 
 6. Start the Composer REST Server with Fabric running from step #2 above
 
