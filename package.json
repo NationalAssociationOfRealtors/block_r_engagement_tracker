@@ -21,14 +21,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/hyperledger/composer-sample-networks.git"
+    "url": "https://github.com/NationalAssociationOfRealtors/block_r_engagement_tracker.git"
   },
   "keywords": [
     "sample",
     "composer",
     "composer-network"
   ],
-  "author": "Hyperledger Composer",
+  "author": "Block R",
   "license": "Apache-2.0",
   "devDependencies": {
     "browserfs": "^1.2.0",
